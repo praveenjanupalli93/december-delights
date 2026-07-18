@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-forest: #052a22;
+  --color-forest-deep: #031e18;
+  --color-forest-darker: #01100d;
+  --color-gold: oklch(0.79 0.13 82);
+  --color-gold-light: oklch(0.85 0.12 85);
+  --color-cream: oklch(0.97 0.015 85);
+  --color-ink: oklch(0.18 0 0);
+
+  --color-background: #01100d;
+  --color-foreground: oklch(0.97 0.015 85);
+  --color-border: oklch(1 0 0 / 12%);
+
+  --font-display: "Inter", sans-serif;
+--font-sub: "Inter", sans-serif;
+--font-body: "Inter", sans-serif;
+--font-btn: "Inter", sans-serif;
+}
+
+:root {
+  --forest: #052a22;
+  --forest-deep: #031e18;
+  --forest-darker: #01100d;
+  --gold: oklch(0.79 0.13 82);
+  --gold-light: oklch(0.85 0.12 85);
+  --cream: oklch(0.97 0.015 85);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #01100d;
+  color: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.02em; }
+
+/* Backgrounds: darker forest for hero/base, PURE BLACK for food + ambience sections */
+@utility doodle-bg {
+  background-color: var(--forest-darker);
+  background-image:
+    radial-gradient(ellipse at top, #08382e 0%, var(--forest-darker) 55%, #000 100%);
+}
+
+@utility doodle-tile {
+  /* used by Signature (food) and Contact — force black */
+  background-color: #000;
+}
+
+/* Food sections + Gallery ambience explicitly black */
+#signature,
+#menu,
+#foodmenu,
+#gallery {
+  background-color: #000 !important;
+}
+#signature .absolute.inset-0,
+#gallery .absolute.inset-0 {
+  background-color: transparent !important;
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-btn);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--forest);
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  border-radius: 999px;
+  box-shadow: 0 8px 30px oklch(0.79 0.13 82 / 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+}
+
+@utility btn-gold-hover {
+  &:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 40px oklch(0.79 0.13 82 / 0.45);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@utility animate-float { animation: float-slow 6s ease-in-out infinite; }
+
+* { border-color: var(--color-border); }
