@@ -22,7 +22,7 @@ function Hero() {
         {
     /* LEFT: text */
   }
-        <div className="flex flex-col max-h-[90rem] items-center text-center ml-10 lg:items-start lg:text-left">
+        <div className="flex flex-col max-h-[90rem] items-center text-center lg:ml-10 lg:items-start lg:text-left">
           <motion.div
     initial={{ opacity: 0, scale: 0.85, y: 20 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
